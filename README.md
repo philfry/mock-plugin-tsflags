@@ -40,3 +40,6 @@ config_opts['plugin_conf']['tsflags_enable'] = True
 config_opts['plugin_conf']['tsflags_opts']['flags'] = "nocontexts,noscripts"
 ```
 
+## Credits
+
+Jan Vcelak wrote the selinux mock plugin which this plugin is based on.
