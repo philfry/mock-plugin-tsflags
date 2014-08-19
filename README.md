@@ -22,5 +22,6 @@ copy the tsflags.py to your mock-plugin directory, usually something like
 ## Usage
 
 ```
-mock -r myroot --install --enable-plugin=tsflags --plugin-option tsflags:flags=nocontexts,noscripts
+mock -r myroot --install --enable-plugin=tsflags \
+    --plugin-option tsflags:flags=nocontexts,noscripts
 ```
