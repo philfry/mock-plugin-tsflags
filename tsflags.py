@@ -15,9 +15,7 @@ class TSflags(object):
 
 	   This can be useful to skip %-scripts when (un-)installing packages.
 
-	   Please note that this plugin will not allow any later command line args.
-	   To use it together with the selinux plugin, please add "nocontexts" to
-	   the flags.
+       Please note that this plugin conflicts with the selinux-plugin.
 	"""
 
 	decorate(traceLog())
@@ -45,9 +43,8 @@ class TSflags(object):
 		if type(command) is list:
 			if command[0].startswith(self.rootObj.yum_path):
 				command.append(options)
-				command.append("--")
 		elif type(command) is str:
 			if command.startswith(self.rootObj.yum_path):
-				command += " %s" % options + " --"
+				command += " %s" % options
 
 		return self._originalUtilDo(command, *args, **kargs)
