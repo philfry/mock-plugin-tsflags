@@ -23,11 +23,16 @@ class TSflags(object):
 		self.rootObj = rootObj
 		self.conf = conf
 		rootObj.addHook("preyum", self._tsPreYumHook)
+		rootObj.addHook("postyum", self._tsPostYumHook)
 
 	decorate(traceLog())
 	def _tsPreYumHook(self):
 		self._originalUtilDo = mockbuild.util.do
 		mockbuild.util.do = self._tsDoYum
+
+	decorate(traceLog())
+	def _tsPostYumHook(self):
+		mockbuild.util.do = self._originalUtilDo
 
 	decorate(traceLog())
 	def _tsDoYum(self, command, *args, **kargs):
